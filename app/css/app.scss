@@ -1,0 +1,10 @@
+$white: #ffffff;
+$deepSkyBlue: #00BFFF;
+$black: #000000;
+
+body {font-family: arial, sans-serif}
+.mainContent {
+  padding-top:30px;
+  background-color:$deepSkyBlue;
+  color:$black
+}
