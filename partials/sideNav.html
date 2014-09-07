@@ -1,0 +1,22 @@
+<div data-ng-controller="sideNavController" >
+    <div class="panel-group" id="accordion">
+        <div ng-repeat="p in PublishersList">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$index}}">
+                            {{p.publisherName}}
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse{{$index}}" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div ng-repeat="t in TitlesList">
+                            <div>{{t.title | displayTitles:t.publisherId :p }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</div>

@@ -1,0 +1,16 @@
+{
+
+    "TitleList" :
+            [
+                {"id": 1, "titleId": 1, "publisherId":"1", "totalIssues":"200", "title": "Amazing Spider-man and friends"},
+                {"id": 2, "titleId": 2, "publisherId":"1", "totalIssues":"1", "title": "Mighty Thor"},
+                {"id": 3, "titleId": 3, "publisherId":"2", "totalIssues":"12", "title": "Batman"},
+                {"id": 4, "titleId": 4, "publisherId":"3", "totalIssues":"13", "title": "Savage Dragon"},
+                {"id": 5, "titleId": 5, "publisherId":"2", "totalIssues":"10", "title": "Teen Titans"},
+                {"id": 6, "titleId": 6, "publisherId":"2", "totalIssues":"20", "title": "Blue Beetle"},
+                {"id": 7, "titleId": 7, "publisherId":"1", "totalIssues":"30", "title": "Captain America"},
+                {"id": 8, "titleId": 8, "publisherId":"1", "totalIssues":"62", "title": "Avengers"},
+                {"id": 9, "titleId": 9, "publisherId":"3", "totalIssues":"5", "title": "Spawn"}
+            ]
+
+}

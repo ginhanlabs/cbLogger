@@ -1,0 +1,40 @@
+<!DOCTYPE html >
+
+<head >
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+
+    <script  src="scripts/app.js"></script>
+    <script type="text/javascript" src="scripts/appController.js"></script>
+    <script type="text/javascript" src="scripts/homeController.js"></script>
+    <script type="text/javascript" src="scripts/navController.js"></script>
+    <script type="text/javascript" src="scripts/sideNavController.js"></script>
+    <script type="text/javascript" src="scripts/services.js"></script>
+    <script type="text/javascript" src="scripts/filters.js"></script>
+
+</head>
+<body ng-app="cbApp">
+    <div ng-controller="appController">
+        <div ng-include src="'partials/mainNav.html'"></div>
+        <div class="container-fluid">
+            <div class="col-lg-2">
+                <div ng-include src="'partials/sideNav.html'"></div>
+            </div>
+            <div class="col-lg-10">
+             <ng-view></ng-view>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
