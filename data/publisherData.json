@@ -1,9 +1,9 @@
 {
     "PublisherList":
         [
-            {"id": 1, "publisherId": 1, "publisherName": "Marvel"},
-            {"id": 2, "publisherId": 2, "publisherName": "DC"},
-            {"id": 3, "publisherId": 3, "publisherName": "Image"}
+            {"id": 1, "publisherId": 1, "publisherName": "Marvel", "total":4},
+            {"id": 2, "publisherId": 2, "publisherName": "DC", "total":3},
+            {"id": 3, "publisherId": 3, "publisherName": "Image", "total":2}
         ]
 
 }

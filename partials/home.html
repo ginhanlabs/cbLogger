@@ -1,3 +1,80 @@
 <div data-ng-controller="homeController">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="col-md-3">
+                    <h4>Collection</h4>
+                  <table class="table table-striped">
+                        <tr>
+                            <th>Publisher</th>
+                            <th class="text-right">No. books</th>
+                        </tr>
+                        <tr ng-repeat="p in PublishersList | limitTo: displayLimit">
+                            <td>{{p.publisherName}}</td>
+                            <td tally-book num="p.total" emitter-id="'totalPublishers'" class="text-right">{{p.total}}</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                           <td class="text-right">{{totalIssuesByPublishers}}</td>
+                        </tr>
+                    </table>
+                    <div class="text-right">
+                        <a href="#">View all</a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                   <h4>Most Valuable</h4>
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Title</th>
+                            <th>Issue</th>
+                            <th class="text-right">Value</th>
+                        </tr>
+                        <tr>
+                            <td>Amazing Spider-man</td>
+                            <td>252</td>
+                            <td class="text-right">$40.00</td>
+                        </tr>
+                        <tr>
+                            <td>Captain America</td>
+                            <td>300</td>
+                            <td class="text-right">$5.00</td>
+                        </tr>
+                        <tr>
+                            <td>Amazing Spider-man</td>
+                            <td>300</td>
+                            <td class="text-right">$20.00</td>
+                        </tr>
+                    </table>
+                    <div class="text-right">
+                        <a href="#">Top 100</a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h4>Most Collected</h4>
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Title</th>
+                            <th>Issues</th>
+                        </tr>
+                        <tr ng-repeat="t in TitlesList | limitTo:displayLimit | orderBy:'-totalIssues'">
+                            <td>{{t.title}}</td>
+                            <td tally-book num="t.totalIssues" init="true" emitter-id="'totalIssuesPerTitle'" class="text-right">{{t.totalIssues}}</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td class="text-right">{{totalTitleIssues}}</td>
+                        </tr>
+                    </table>
+                    <div class="text-right">
+                        <a href="#">View all</a>
+                    </div>
+                 </div>
 
+            </div>
+            <div class="col-md-3">
+                sfsdfsd
+            </div>
+        </div>
+    </div>
 </div>
