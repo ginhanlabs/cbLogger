@@ -1,7 +1,6 @@
 <div data-ng-controller="homeController">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-9">
                 <div class="col-md-3">
                     <h4>Collection</h4>
                   <table class="table table-striped">
@@ -11,11 +10,11 @@
                         </tr>
                         <tr ng-repeat="p in PublishersList | limitTo: displayLimit">
                             <td>{{p.publisherName}}</td>
-                            <td tally-book num="p.total" emitter-id="'totalPublishers'" class="text-right">{{p.total}}</td>
+                            <td class="text-right">{{p.total}}</td>
                         </tr>
                         <tr>
                             <td>Total</td>
-                           <td class="text-right">{{totalIssuesByPublishers}}</td>
+                           <td class="text-right">{{ PublishersList | total:'total' }}</td>
                         </tr>
                     </table>
                     <div class="text-right">
@@ -57,24 +56,81 @@
                             <th>Title</th>
                             <th>Issues</th>
                         </tr>
-                        <tr ng-repeat="t in TitlesList | limitTo:displayLimit | orderBy:'-totalIssues'">
+                      <tr ng-repeat="t in TitlesList | limitTo:displayLimit | orderBy:'-totalIssues'">
                             <td>{{t.title}}</td>
-                            <td tally-book num="t.totalIssues" init="true" emitter-id="'totalIssuesPerTitle'" class="text-right">{{t.totalIssues}}</td>
+                            <td class="text-right">{{t.totalIssues}}</td>
                         </tr>
                         <tr>
                             <td>Total</td>
-                            <td class="text-right">{{totalTitleIssues}}</td>
+                            <td class="text-right">{{TitlesList | total:'totalIssues'}}</td>
                         </tr>
                     </table>
                     <div class="text-right">
                         <a href="#">View all</a>
                     </div>
                  </div>
-
-            </div>
             <div class="col-md-3">
-                sfsdfsd
+                <h4>Comic Entry</h4>
+                <form novalidate role="form" >
+                    <div class="row form-group">
+                       <div class="col-md-4">
+                            <label for="ddl-publisher" class="">Publisher</label>
+                       </div>
+                        <div class="col-md-8">
+                            <select class="form-control" id="ddl-publisher" ng-model="form.publisher">
+                                <option value="">--</option>
+                                <option value="1">Marvel</option>
+                                <option value="2">DC</option>
+                                <option value="3">Image</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            <label for="ddl-title">Title</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select class="form-control" id="ddl-title" ng-model="form.title">
+                                <option value="1">Amazing Spider-man</option>
+                                <option value="2">Mighty Thor</option>
+                                <option value="3">Batman</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            <label for="txt-issue">Issue</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="txt-issue" data-ng-model="form.issue" ng-required="form.publisher">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            <label for="txt-price">Price</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="txt-price" data-ng-model="form.price">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            <label for="txt-condition">Condition</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select class="form-control" id="txt-condition" data-ng-model="form.condition" >
+                                <option value="">--</option>
+                                <option value="M">Mint</option>
+                                <option value="F">Fine</option>
+                                <option value="G">Good</option>
+                                <option value="F">Fair</option>
+                                <option value="P">Poor</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
             </div>
+
         </div>
     </div>
 </div>
