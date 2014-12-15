@@ -1,0 +1,8 @@
+<tr ng-repeat="p in PublishersList">
+    <td>{{p.publisherName}}</td>
+    <td tally-book num="p.total" emitter-id="'totalPublishers'">{{p.total}}</td>
+</tr>
+<tr>
+    <td>Total</td>
+    <td>{{totalIssuesByPublishers}}</td>
+</tr>

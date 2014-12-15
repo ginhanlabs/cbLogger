@@ -1,6 +1,8 @@
-<!DOCTYPE html >
-
-<head >
+<!DOCTYPE html  >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+<head  >
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title></title>
@@ -11,9 +13,8 @@
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
-    <script src="/bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+    <script src="bower_components/ui-router/release/angular-ui-router.min.js"></script>
+
 
     <script  src="scripts/app.js"></script>
     <script type="text/javascript" src="scripts/appController.js"></script>
@@ -22,6 +23,7 @@
     <script type="text/javascript" src="scripts/sideNavController.js"></script>
     <script type="text/javascript" src="scripts/services.js"></script>
     <script type="text/javascript" src="scripts/filters.js"></script>
+    <script type="text/javascript" src="partials/newEntryDirective.js"></script>
 
 </head>
 <body ng-app="cbApp">
@@ -29,10 +31,10 @@
         <div ng-include src="'partials/mainNav.html'"></div>
         <div class="container-fluid">
             <div class="col-lg-2">
-                <div ng-include src="'partials/sideNav.html'"></div>
+               <div ng-include src="'partials/sideNav.html'"></div>
             </div>
             <div class="col-lg-10">
-             <ng-view></ng-view>
+             <div ui-view></div>
             </div>
         </div>
 

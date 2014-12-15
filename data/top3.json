@@ -1,0 +1,10 @@
+{
+
+    "topIssues" :
+        [
+            {"id": 1, "title": "Amazing Spider-man and Friends", "publisherId":"1", "issue":200, "qty": 1, "box":1,"marketValue":1.00, "coverValue":1.00, "condition":"F","notes":"" },
+            {"id": 2, "title": "Mighty Thor", "publisherId":"1", "issue":11, "qty": 1, "box":1,"marketValue":1.00, "coverValue":1.00, "condition":"G","notes":"" },
+            {"id": 2, "title": "Mighty Thor", "publisherId":"1", "issue":12, "qty": 1, "box":1,"marketValue":1.00, "coverValue":1.00, "condition":"G","notes":"" }
+        ]
+
+}

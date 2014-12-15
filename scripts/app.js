@@ -1,18 +1,18 @@
 'use strict';
 
 var cbApp = angular.module('cbApp', [
-    'ngRoute',
-    'ngResource'
-])
-    .config(['$routeProvider', function($routeProvider){
-        $routeProvider
-            .when('/', {
-                templateUrl: 'partials/home.html',
-                controller: 'homeController'
+        'ui.router',
+        'cbApp.directives'
+    ])
+    .config(function($stateProvider, $urlRouterProvider){
+        $urlRouterProvider.otherwise("/");
+         $stateProvider
+            .state('/', {
+                url:'/',
+                templateUrl:"partials/home.html",
+                controller: "homeController"
             })
-            .otherwise({
-                redirectTo: '/'
-            })
-    }])
+    });
+
 
 

@@ -29,20 +29,15 @@
                             <th>Issue</th>
                             <th class="text-right">Value</th>
                         </tr>
-                        <tr>
-                            <td>Amazing Spider-man</td>
-                            <td>252</td>
-                            <td class="text-right">$40.00</td>
+                        <tr data-ng-repeat="ti in topIssues">
+                            <td>{{ ti.title }}</td>
+                            <td>{{ ti.issue }}</td>
+                            <td class="text-right">{{ ti.marketValue | currency:"$":00 }}</td>
                         </tr>
                         <tr>
-                            <td>Captain America</td>
-                            <td>300</td>
-                            <td class="text-right">$5.00</td>
-                        </tr>
-                        <tr>
-                            <td>Amazing Spider-man</td>
-                            <td>300</td>
-                            <td class="text-right">$20.00</td>
+                            <td>Total</td>
+                            <td></td>
+                            <td class="text-right">{{ topIssues | total:'marketValue' | currency:"$":00 }}</td>
                         </tr>
                     </table>
                     <div class="text-right">
