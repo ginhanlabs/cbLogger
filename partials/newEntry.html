@@ -5,11 +5,9 @@
             <label for="ddl-publisher" class="">Publisher</label>
         </div>
         <div class="col-md-8">
-            <select class="form-control" id="ddl-publisher" ng-model="form.publisher">
-                <option value="">--</option>
-                <option value="1">Marvel</option>
-                <option value="2">DC</option>
-                <option value="3">Image</option>
+            <select class="form-control" id="ddl-publisher" ng-model="form.publisher"
+                    ng-options="p.publisherName for p in PublishersList track by p.id" ng-change="setPublisher(form.publisher);">
+                <option value="0">--</option>
             </select>
         </div>
     </div>
@@ -18,13 +16,10 @@
             <label for="ddl-title">Title</label>
         </div>
         <div class="col-md-8">
-            <ddl-titles  id="ddl-title" ></ddl-titles>
-           <!-- <select class="form-control" id="ddl-title" ng-model="form.title">
-                <option value="">--</option>
-                <option value="1">Amazing Spider-man</option>
-                <option value="2">Mighty Thor</option>
-                <option value="3">Batman</option>
-            </select>-->
+            <select class="form-control" id="ddl-title" ng-model="form.title" data-ng-disabled="selectedPublisher === 0"
+                    ng-options="t.title for t in TitlesList | filter: {publisherId:selectedPublisher} | orderBy:'title'">
+                <option value="0">--</option>
+            </select>
         </div>
     </div>
     <div class="row form-group">
