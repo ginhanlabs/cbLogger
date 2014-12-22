@@ -2,7 +2,7 @@
 
 var cbApp = angular.module('cbApp', [
         'ui.router',
-        'cbApp.directives'
+        'ui.grid'
     ])
     .config(function($stateProvider, $urlRouterProvider){
         $urlRouterProvider.otherwise("/");
