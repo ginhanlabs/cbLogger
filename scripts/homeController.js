@@ -5,6 +5,19 @@ cbApp.controller('homeController',['$scope', function($scope){
        $scope.totalIssuesByPublishers = 0;
         $scope.totalTitleIssues = 0;
         $scope.displayLimit = 3;
+    $scope.form = {};
+    $scope.master = {
+            "publisher":  "",
+            "title": "",
+            "issue":  "",
+            "qty" :  "",
+            "price" :  "",
+            "value":  "",
+            "condition":  "",
+            "box" :  "",
+            "remove": "",
+            "edit": ""
+        };
 
         $scope.columns = [
             { field: 'Publisher' },
@@ -16,46 +29,43 @@ cbApp.controller('homeController',['$scope', function($scope){
             {field: 'Condition'},
             {field: 'Box'},
             {field: 'Remove'},
-            {field: 'Add'}
+            {field: 'Edit'}
         ];
 
-    $scope.entryData =  [      {
-        "Publisher": "Marvel",
-        "Title": "ASM",
-        "Issue": 133,
-        "Qty" : 1,
-        "Price" : 2.99,
-        "Value": 2.99,
-        "Condition": "nm",
-        "Box" : 1,
-        "Remove": "",
-        "Add": ""
-        },
-        {
-            "Publisher": "Marvel",
-            "Title": "Amazing Spider-man",
-            "IssueNum" : "122",
-            "Qty" : "1",
-            "Price" : "2.02",
-            "Value" : "2.00",
-            "Condition" : "NM",
-            "Box": "",
-            "Remove" :"",
-            "Add" : ""
+    $scope.entryData =  [];
 
+    $scope.bookEntriesGridOptions = {
+        enableSorting: true,
+        data: $scope.entryData,
+        columnDefs: $scope.columns,
+        onRegisterApi: function(gridApi) {
+            $scope.gridApi = gridApi;
         }
-    ];
+    };
 
-        $scope.bookEntriesGridOptions = {
-            enableSorting: true,
-            data: $scope.entryData,
-            columnDefs: $scope.columns,
-            onRegisterApi: function(gridApi) {
-                $scope.gridApi = gridApi;
-            }
+    $scope.addEntry = function(){
+       var newEntry = {
+            "Publisher":  entryForm[0].value,
+            "Title": entryForm[1].value, //entryForm[1].options[entryForm[0].value].text,
+            "Issue":  entryForm[2].value,
+            "Qty" :  entryForm[3].value,
+            "Price" :  entryForm[4].value,
+            "Value":  "",
+            "Condition":  entryForm[5].value,
+            "Box" :  entryForm[6].value,
+            "Remove": "",
+            "Edit": ""
+       };
+        $scope.entryData.push(newEntry);
+       // $scope.form = angular.copy($scope.master);
+        console.log($scope.form.box);
+        $scope.form = {
+
+            "box" :  ""
         };
-
-
+        ;
+        console.log($scope.form.box);
+    }
 
  }])
 

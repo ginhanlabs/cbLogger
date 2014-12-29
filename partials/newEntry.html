@@ -1,72 +1,55 @@
 <h4>Comic Entry</h4>
-<form novalidate role="form" >
-    <div class="row form-group">
-        <div class="col-md-4">
-            <label for="ddl-publisher" class="">Publisher</label>
-        </div>
-        <div class="col-md-8">
+<!--<pre>form = {{form | json}}</pre>
+<pre>master = {{master | json}}</pre>-->
+
+<form novalidate role="form" id="entryForm" name="entryForm">
+    <div class="row">
+        <div class="col-lg-1"><label for="ddl-publisher" class="">Publisher</label></div>
+        <div class="col-lg-3"><label for="ddl-title">Title</label></div>
+        <div class="col-lg-1"> <label for="txt-issue">Issue</label></div>
+        <div class="col-lg-1"> <label for="txt-qty">Qty</label></div>
+        <div class="col-lg-1"><label for="txt-price">Price</label></div>
+        <div class="col-lg-1"><label for="txt-condition">Condition</label></div>
+        <div class="col-lg-1"><label for="txt-box">Box</label></div>
+        <div class="col-lg-1"></div>
+    </div>
+    <div class="row form-horizontal">
+        <div class="col-lg-1 input-group-sm">
             <select class="form-control" id="ddl-publisher" ng-model="form.publisher"
-                    ng-options="p.publisherName for p in PublishersList track by p.id" ng-change="setPublisher(form.publisher);">
-                <option value="0">--</option>
+                 ng-options="p.publisherName for p in PublishersList" ng-change="setPublisher(form.publisher);">
+            <option value="0">--</option>
             </select>
         </div>
-    </div>
-    <div class="row form-group">
-        <div class="col-md-4">
-            <label for="ddl-title">Title</label>
-        </div>
-        <div class="col-md-8">
-            <select class="form-control" id="ddl-title" ng-model="form.title" data-ng-disabled="selectedPublisher === 0"
+        <div class="col-lg-3 input-group-sm">
+            <select class="form-control" id="ddl-title" ng-model="form.title" data-ng-disabled="form.publisher === undefined"
                     ng-options="t.title for t in TitlesList | filter: {publisherId:selectedPublisher} | orderBy:'title'">
                 <option value="0">--</option>
             </select>
         </div>
-    </div>
-    <div class="row form-group">
-        <div class="col-md-4">
-            <label for="txt-issue">Issue</label>
-        </div>
-        <div class="col-md-8">
-            <input type="text" class="form-control" id="txt-issue" data-ng-model="form.issue" ng-required="form.publisher">
-        </div>
-    </div>
-    <div class="row form-group">
-        <div class="col-md-4">
-            <label for="txt-qty">Qty</label>
-        </div>
-        <div class="col-md-8">
-            <input type="text" class="form-control" id="txt-qty" data-ng-model="form.qty">
-        </div>
-    </div>
-    <div class="row form-group">
-        <div class="col-md-4">
-            <label for="txt-price">Price</label>
-        </div>
-        <div class="col-md-8">
-            <input type="text" class="form-control" id="txt-price" data-ng-model="form.price">
-        </div>
-    </div>
-    <div class="row form-group">
-        <div class="col-md-4">
-            <label for="txt-condition">Condition</label>
-        </div>
-        <div class="col-md-8">
+        <div class="col-lg-1 input-group-sm "><input type="text" class="form-control" id="txt-issue" data-ng-model="form.issue" ng-required="form.publisher"></div>
+        <div class="col-lg-1 input-group-sm"> <input type="number"  min="0" max="10" class="form-control" id="txt-qty" data-ng-model="form.qty"></div>
+        <div class="col-lg-1 input-group-sm"> <input type="text" class="form-control" id="txt-price" data-ng-model="form.price"></div>
+        <div class="col-lg-1 input-group-sm">
             <select class="form-control" id="txt-condition" data-ng-model="form.condition" >
                 <option value="">--</option>
-                <option value="M">Mint</option>
-                <option value="F">Fine</option>
-                <option value="G">Good</option>
-                <option value="F">Fair</option>
-                <option value="P">Poor</option>
-            </select>
+                <option value="Mint">Mint</option>
+                <option value="Fine">Fine</option>
+                <option value="Good">Good</option>
+                <option value="Fair">Fair</option>
+                <option value="Poor">Poor</option>
+        </select></div>
+        <div class="col-lg-1 input-group-sm">
+            <input type="text" class="form-control" id="txt-box" data-ng-model="form.box" type="number"  min="0" max="100" value="1">
+        </div>
+        <div class="col-lg-1">
+            <button type="button" class="btn btn-primary" aria-label="Notes">
+                <span class=" glyphicon glyphicon-file" aria-hidden="true" ng-click="addNotes()"></span>
+            </button>
+            <button type="button" class="btn btn-primary" aria-label="Add" ng-click="addEntry()">
+                <span class=" glyphicon glyphicon-plus-sign" aria-hidden="true" ></span>
+            </button>
         </div>
     </div>
-    <div class="row form-group">
-        <div class="col-md-4">
-            <label for="txt-box">Box</label>
-        </div>
-        <div class="col-md-8">
-            <input type="text" class="form-control" id="txt-box" data-ng-model="form.box">
-        </div>
-    </div>
+
+
 </form>

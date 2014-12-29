@@ -1,7 +1,7 @@
 <div data-ng-controller="homeController">
-            <div class="col-lg-10">
+            <div >
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <h4>Collection</h4>
                           <table class="table table-striped">
                                 <tr>
@@ -21,7 +21,7 @@
                                 <a href="#">View all</a>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                            <h4>Most Valuable</h4>
                             <table class="table table-striped">
                                 <tr>
@@ -65,17 +65,25 @@
                                 <a href="#">View all</a>
                             </div>
                         </div>
+                        <div class="col-md-3">
+                            <h4>Monthly Spending</h4>
+                            chart here
+
+                        </div>
                     </div>
+                <div class="row">
+                    <div ng-include src="'partials/newEntry.html'"></div>
+                </div>
                     <div class="row">
-                        <div class="col-md-11">
+                        <div class="col-md-10">
                             <br/><br/>
                             <div ui-grid="bookEntriesGridOptions" class="myGrid"></div>
                         </div>
                 </div>
             </div>
 
-            <div class="col-lg-2">
-                <div ng-include src="'partials/newEntry.html'"></div>
-            </div>
+           <!-- <div class="col-lg-2">
+
+            </div>-->
 
 </div>
