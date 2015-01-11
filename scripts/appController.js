@@ -14,9 +14,7 @@ cbApp.controller('appController',['$scope', '$http', function($scope,  $http){
     $scope.happy = "ddd";
     $scope.appController = "appController";
 
-    $scope.setPublisher = function(val){
-        $scope.selectedPublisher = val.publisherId;
-    }
+
 
 }]);
 

@@ -1,89 +1,87 @@
-<div data-ng-controller="homeController">
-            <div >
-                    <div class="row">
-                        <div class="col-md-3">
-                            <h4>Collection</h4>
-                          <table class="table table-striped">
-                                <tr>
-                                    <th>Publisher</th>
-                                    <th class="text-right">No. books</th>
-                                </tr>
-                                <tr ng-repeat="p in PublishersList | limitTo: displayLimit">
-                                    <td>{{p.publisherName}}</td>
-                                    <td class="text-right">{{p.total}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Total</td>
-                                   <td class="text-right">{{ PublishersList | total:'total' }}</td>
-                                </tr>
-                            </table>
-                            <div class="text-right">
-                                <a href="#">View all</a>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                           <h4>Most Valuable</h4>
-                            <table class="table table-striped">
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Issue</th>
-                                    <th class="text-right">Value</th>
-                                </tr>
-                                <tr data-ng-repeat="ti in topIssues">
-                                    <td>{{ ti.title }}</td>
-                                    <td>{{ ti.issue }}</td>
-                                    <td class="text-right">{{ ti.marketValue | currency:"$":00 }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Total</td>
-                                    <td></td>
-                                    <td class="text-right">{{ topIssues | total:'marketValue' | currency:"$":00 }}</td>
-                                </tr>
-                            </table>
-                            <div class="text-right">
-                                <a href="#">Top 100</a>
-                            </div>
-
-                        </div>
-                        <div class="col-md-3">
-                            <h4>Most Collected</h4>
-                            <table class="table table-striped">
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Issues</th>
-                                </tr>
-                              <tr ng-repeat="t in TitlesList | limitTo:displayLimit | orderBy:'-totalIssues'">
-                                    <td>{{t.title}}</td>
-                                    <td class="text-right">{{t.totalIssues}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Total</td>
-                                    <td class="text-right">{{TitlesList | total:'totalIssues'}}</td>
-                                </tr>
-                            </table>
-                            <div class="text-right">
-                                <a href="#">View all</a>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <h4>Monthly Spending</h4>
-                            chart here
-
-                        </div>
-                    </div>
-                <div class="row">
-                    <div ng-include src="'partials/newEntry.html'"></div>
-                </div>
-                    <div class="row">
-                        <div class="col-md-10">
-                            <br/><br/>
-                            <div ui-grid="bookEntriesGridOptions" class="myGrid"></div>
-                        </div>
-                </div>
+<div ><!-- data-ng-controller="homeController" -->
+    <div class="row">
+        <div class="col-md-3">
+            <h4>Collection</h4>
+          <table class="table table-striped">
+                <tr>
+                    <th>Publisher</th>
+                    <th class="text-right">No. books</th>
+                </tr>
+                <tr ng-repeat="p in PublishersList | limitTo: displayLimit">
+                    <td>{{p.publisherName}}</td>
+                    <td class="text-right">{{p.total}}</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                   <td class="text-right">{{ PublishersList | total:'total' }}</td>
+                </tr>
+            </table>
+            <div class="text-right">
+                <a href="#">View all</a>
+            </div>
+        </div>
+        <div class="col-md-3">
+           <h4>Most Valuable</h4>
+            <table class="table table-striped">
+                <tr>
+                    <th>Title</th>
+                    <th>Issue</th>
+                    <th class="text-right">Value</th>
+                </tr>
+                <tr data-ng-repeat="ti in topIssues">
+                    <td>{{ ti.title }}</td>
+                    <td>{{ ti.issue }}</td>
+                    <td class="text-right">{{ ti.marketValue | currency:"$":00 }}</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td></td>
+                    <td class="text-right">{{ topIssues | total:'marketValue' | currency:"$":00 }}</td>
+                </tr>
+            </table>
+            <div class="text-right">
+                <a href="#">Top 100</a>
             </div>
 
-           <!-- <div class="col-lg-2">
+        </div>
+        <div class="col-md-3">
+            <h4>Most Collected</h4>
+            <table class="table table-striped">
+                <tr>
+                    <th>Title</th>
+                    <th>Issues</th>
+                </tr>
+              <tr ng-repeat="t in TitlesList | limitTo:displayLimit | orderBy:'-totalIssues'">
+                    <td>{{t.title}}</td>
+                    <td class="text-right">{{t.totalIssues}}</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td class="text-right">{{TitlesList | total:'totalIssues'}}</td>
+                </tr>
+            </table>
+            <div class="text-right">
+                <a href="#">View all</a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <h4>Monthly Spending</h4>
+            chart here
 
-            </div>-->
+        </div>
+    </div>
+    <div class="row">
+        <new-entry-directive titleslist="TitlesList" publisherlist="PublishersList" ></new-entry-directive>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <br/><br/>
+            <div ui-grid="bookEntriesGridOptions" class="myGrid" external-scopes="bookEntriesGridScopes"></div>
+            <br/>
+            <div class="text-center">
+                <button type="button" class="btn btn-primary btn-sm ">Save</button>
+            </div>
+        </div>
 
+    </div>
 </div>

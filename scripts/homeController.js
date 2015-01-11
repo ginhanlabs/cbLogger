@@ -1,73 +1,70 @@
 'use strict'
 
-cbApp.controller('homeController',['$scope', function($scope){
-       $scope.homeController = "home";
-       $scope.totalIssuesByPublishers = 0;
+cbApp.controller('homeController',['$scope',  function($scope){
+        $scope.homeController = "home";
+        $scope.totalIssuesByPublishers = 0;
         $scope.totalTitleIssues = 0;
         $scope.displayLimit = 3;
-    $scope.form = {};
-    $scope.master = {
-            "publisher":  "",
-            "title": "",
-            "issue":  "",
-            "qty" :  "",
-            "price" :  "",
-            "value":  "",
-            "condition":  "",
-            "box" :  "",
-            "remove": "",
-            "edit": ""
-        };
 
         $scope.columns = [
-            { field: 'Publisher' },
-            { field: 'Title' },
-            {field: 'Issue'},
-            {field: 'Qty'},
-            {field: 'Price'},
-            {field: 'Value'},
-            {field: 'Condition'},
-            {field: 'Box'},
-            {field: 'Remove'},
-            {field: 'Edit'}
+            {field: 'publisher', cellFilter :'getNameFilter'},
+            {field: 'title', cellFilter: 'getNameFilter'} ,
+            {field: 'issue'},
+            {field: 'qty'},
+            {field: 'price'},
+            {field: 'value'},
+            {field: 'condition'},
+            {field: 'box'},
+            {field: 'notes'},
+            {name: 'remove', displayName: 'Remove', cellTemplate: '<button id="removeBtn_{{$index}}" type="button" class="btn-small" ng-click="getExternalScopes().remove(row.entity)">Remove</button> '}
         ];
 
-    $scope.entryData =  [];
 
-    $scope.bookEntriesGridOptions = {
-        enableSorting: true,
-        data: $scope.entryData,
-        columnDefs: $scope.columns,
-        onRegisterApi: function(gridApi) {
-            $scope.gridApi = gridApi;
-        }
-    };
-
-    $scope.addEntry = function(){
-       var newEntry = {
-            "Publisher":  entryForm[0].value,
-            "Title": entryForm[1].value, //entryForm[1].options[entryForm[0].value].text,
-            "Issue":  entryForm[2].value,
-            "Qty" :  entryForm[3].value,
-            "Price" :  entryForm[4].value,
-            "Value":  "",
-            "Condition":  entryForm[5].value,
-            "Box" :  entryForm[6].value,
-            "Remove": "",
-            "Edit": ""
-       };
-        $scope.entryData.push(newEntry);
-       // $scope.form = angular.copy($scope.master);
-        console.log($scope.form.box);
-        $scope.form = {
-
-            "box" :  ""
+        $scope.bookEntriesGridOptions = {
+            enableSorting: true,
+            data: [],
+            columnDefs: $scope.columns,
+            onRegisterApi: function(gridApi) {
+                $scope.gridApi = gridApi;
+            }
         };
-        ;
-        console.log($scope.form.box);
-    }
+
+        $scope.bookEntriesGridScopes = {
+            remove: function(row){
+                var bookData = $scope.bookEntriesGridOptions.data;
+                for (var i=0; i < bookData.length; i++){
+                    if (row.$$hashKey === bookData[i].$$hashKey) {
+                        bookData.splice(i,1);
+                    }
+                }
+            }
+        }
+
+        $scope.$on("updateGridData", function(event,bookInfo){
+           $scope.bookEntriesGridOptions.data.push(bookInfo);
+        })
 
  }])
+    /* todo modularize the filters */
+    .filter("displayTitles", function(){
+        return function(item,titlePublisherId, publisher){
+            if (titlePublisherId == publisher.publisherId){
+                return item;
+            }
+        }
+    })
+    .filter("total", function() {
+        return function(items, field) {
+            var total = 0, i = 0;
+            for (i = 0; i < items.length; i++) total += items[i][field];
+            return total;
+        }
+    })
+    .filter("getNameFilter", function(){
+        return function (input) {
+            return input.name;
+        };
+    })
 
 
 

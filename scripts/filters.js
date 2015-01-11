@@ -1,6 +1,8 @@
-'use strict';
+/*
+(function(){
 
-cbApp.filter("displayTitles", function(){
+angular.module("cbAppFilter", [])
+    .filter("displayTitles", function(){
         return function(item,titlePublisherId, publisher){
             if (titlePublisherId == publisher.publisherId){
                 return item;
@@ -13,5 +15,13 @@ cbApp.filter("displayTitles", function(){
             for (i = 0; i < items.length; i++) total += items[i][field];
             return total;
         }
-    });
+    })
+    .filter("getNameFilter", function(){
+        return function (input) {
+            return input.name;
+        };
+    })
+});
 
+
+*/
