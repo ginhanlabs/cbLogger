@@ -13,7 +13,7 @@
                 </tr>
                 <tr>
                     <td>Total</td>
-                   <td class="text-right">{{ PublishersList | total:'total' }}</td>
+                   <td class="text-right">{{ PublishersList | totalFilter:'total' }}</td>
                 </tr>
             </table>
             <div class="text-right">
@@ -36,7 +36,7 @@
                 <tr>
                     <td>Total</td>
                     <td></td>
-                    <td class="text-right">{{ topIssues | total:'marketValue' | currency:"$":00 }}</td>
+                    <td class="text-right">{{ topIssues | totalFilter:'marketValue' | currency:"$":00 }}</td>
                 </tr>
             </table>
             <div class="text-right">
@@ -57,7 +57,7 @@
                 </tr>
                 <tr>
                     <td>Total</td>
-                    <td class="text-right">{{TitlesList | total:'totalIssues'}}</td>
+                    <td class="text-right">{{TitlesList | totalFilter:'totalIssues'}}</td>
                 </tr>
             </table>
             <div class="text-right">

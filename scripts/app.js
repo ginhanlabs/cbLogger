@@ -13,7 +13,15 @@ var cbApp = angular.module('cbApp', [
                 templateUrl:"partials/home.html",
                 controller: "homeController"
             })
+             .state('editBookPubTitle',{
+                 url:'/editBookPubTitle',
+                 templateUrl:"partials/editBookPubTitle.html",
+                 controller:"editBookPubTitleController"
+             })
     });
+
+var cbApp2 = angular.module("cbApp2",[]);
+/*var cbFilters = angular.module("cbFilters" , []);*/
 
 /*var cbAppFilter = angular.module('cbAppFilter', [])
     .filter("displayTitles", function(){

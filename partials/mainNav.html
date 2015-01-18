@@ -12,21 +12,26 @@
         </div>
         <div class="collapse navbar-collapse" id="main-navbar-collapse-1">
             <ul class="nav navbar-nav">
+                <li>
+
+                    <a ui-sref="/" aria-label="Home"  class="active"> <span class="glyphicon glyphicon-home" style="font-size: 1.2em;" aria-hidden="true" ></span></a>
+
+                </li>
                 <li class="dropdown">
 
                     <a  class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Admin <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Publishers</a></li>
-                        <li><a href="#">Titles</a></li>
-                        <li><a href="#">Location</a></li>
+                        <li><a ui-sref="editBookPubTitle">Edit Book info</a></li>
+
                         <!--  <li class="divider"></li>
                           <li><a href="#">Separated link</a></li>
                           <li class="divider"></li>
                           <li><a href="#">One more separated link</a></li>-->
                     </ul>
                 </li>
-                <li class="active"><a href="#">Chart View</a></li>
+                <li><a href="#">Chart View</a></li>
             </ul>
+
         </div>
     </div>
 </nav>

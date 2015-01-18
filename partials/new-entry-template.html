@@ -1,4 +1,5 @@
 <h4>Comic Entry</h4>
+        <!--<div class="well alert-warning"  ng-hide="entryForm.$valid">Invalid form</div>-->
 <form novalidate role="form" id="entryForm" name="entryForm">
     <div class="row">
         <div class="col-lg-1"><label for="ddl-publisher" class="">Publisher</label></div>
@@ -42,6 +43,7 @@
             <button type="button" class="btn btn-primary" aria-label="Notes">
                 <span class=" glyphicon glyphicon-file" aria-hidden="true" ng-click="addNotes()"></span>
             </button>
+
             <button type="button" class="btn btn-primary" aria-label="Add" ng-click="addEntry()">
                 <span class=" glyphicon glyphicon-plus-sign" aria-hidden="true" ></span>
             </button>
