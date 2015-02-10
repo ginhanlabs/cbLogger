@@ -20,7 +20,7 @@ var cbApp = angular.module('cbApp', [
              })
     });
 
-var cbApp2 = angular.module("cbApp2",[]);
+/* var cbAppFilters = angular.module("cbAppFilters",[]);*/
 /*var cbFilters = angular.module("cbFilters" , []);*/
 
 /*var cbAppFilter = angular.module('cbAppFilter', [])
