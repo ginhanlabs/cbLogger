@@ -6,7 +6,7 @@
                 titleslist: "=",
                 publisherlist: "="
             },
-            templateUrl:'partials/new-entry-template.html',
+            templateUrl:'partials/newEntry/new-entry-template.html',
             link: function(scope, elem, attrs){
             },
 
@@ -52,5 +52,3 @@
         }
     })
 })();
-
-
