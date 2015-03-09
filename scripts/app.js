@@ -3,14 +3,15 @@
 
 var cbApp = angular.module('cbApp', [
         'ui.router',
-        'ui.grid'
+        'ui.grid',
+        'chart.js'
     ])
     .config(function($stateProvider, $urlRouterProvider){
         $urlRouterProvider.otherwise("/");
          $stateProvider
             .state('/', {
                 url:'/',
-                templateUrl:"partials/home.html",
+                templateUrl:"partials/home/home.html",
                 controller: "homeController"
             })
              .state('editBookPubTitle',{
@@ -43,8 +44,3 @@ var cbApp = angular.module('cbApp', [
             return input.name;
         };
     })*/
-
-
-
-
-
