@@ -1,0 +1,15 @@
+{
+  "name": "cbLogger",
+  "version": "1.0.0",
+  "description": "This project is a personal learning project to develop a comic book tracker/inventory app.\r This project started as a c# project but now has changed directions and turning into a javascript project\r using angularjs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "ginhanlabs",
+  "license": "ISC",
+  "devDependencies": {
+    "webserver": "^1.1.2"
+  }
+}
