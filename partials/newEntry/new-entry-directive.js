@@ -1,6 +1,7 @@
 (function(){
     angular.module('cbApp').directive('newEntryDirective',   function(){
     	var addEntry;
+    	
         return {
             restrict : "E",
             scope: {
@@ -10,15 +11,22 @@
             require: "^homedirective",
             templateUrl:'partials/newEntry/new-entry-template.html',
             link: function(scope, elem, attrs, homedirectiveCtrl){
-            	
-            	  addEntry = function(newEntry){
+            	addEntry = function(newEntry){
             	  	homedirectiveCtrl.updateEntries(newEntry);
             	  };
             },
 
             controller: function($scope){
+            	$scope.hasPublisher = true;
+            	var entryNotes;
+            	
                 $scope.setPublisher = function(val){
                     $scope.selectedPublisher = val.publisherId;
+                    if ($scope.selectedPublisher !== undefined) {
+                    	$scope.hasPublisher = false;
+                    }
+                    else 
+                		$scope.hasPublisher = true;
                 };
 				
 			  $scope.master = {
@@ -45,16 +53,17 @@
                        "mkt":  entryForm[5].value,
                        "condition":  entryForm[6].value,
                        "box" :  entryForm[7].value,
-                       "notes" : entryForm[8].value
+                       "notes" : entryNotes
                    };
                     addEntry(newEntry);
-          		 //$scope.$emit("updateGridData", newEntry);
-                           angular.copy($scope.master,$scope.form);
+          			angular.copy($scope.master,$scope.form);
                       
-   
-                   };
-               
-
+   				};
+   				
+   				$scope.saveNotes = function(){
+   					entryNotes = angular.element("#ta-notes").val();
+   					angular.element("#notesModal").modal('hide');
+   				};
             }
         };
     });

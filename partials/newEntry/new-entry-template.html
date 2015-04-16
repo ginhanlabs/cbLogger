@@ -20,17 +20,17 @@
             </select>
         </div>
         <div class="col-lg-3 input-group-sm">
-            <select class="form-control" id="ddl-title" ng-model="form.title" data-ng-disabled="form.publisher === undefined"
+            <select class="form-control" id="ddl-title" ng-model="form.title" data-ng-disabled="hasPublisher"
                     ng-options="t.title for t in titleslist | filter: {publisherId:selectedPublisher} | orderBy:'title'">
                 <option value="0">--</option>
             </select>
         </div>
-        <div class="col-lg-1 input-group-sm "><input type="text" class="form-control" id="txt-issue" data-ng-model="form.issue" ng-required="form.publisher"></div>
-        <div class="col-lg-1 input-group-sm"> <input type="text"  min="0" max="10" class="form-control" id="txt-qty" data-ng-model="form.qty"></div>
-        <div class="col-lg-1 input-group-sm"> <input type="text" class="form-control" id="txt-price" data-ng-model="form.price"></div>
-        <div class="col-lg-1 input-group-sm"> <input type="text" class="form-control" id="txt-mkt" data-ng-model="form.mkt"></div>
+        <div class="col-lg-1 input-group-sm "><input type="text" class="form-control" id="txt-issue" data-ng-model="form.issue" ng-required="hasPublisher" data-ng-disabled="hasPublisher"></div>
+        <div class="col-lg-1 input-group-sm"> <input type="text"  min="0" max="10" class="form-control" id="txt-qty" data-ng-model="form.qty" data-ng-disabled="hasPublisher"></div>
+        <div class="col-lg-1 input-group-sm"> <input type="text" class="form-control" id="txt-price" data-ng-model="form.price" data-ng-disabled="hasPublisher"></div>
+        <div class="col-lg-1 input-group-sm"> <input type="text" class="form-control" id="txt-mkt" data-ng-model="form.mkt" data-ng-disabled="hasPublisher"></div>
         <div class="col-lg-1 input-group-sm">
-            <select class="form-control" id="txt-condition" data-ng-model="form.condition" >
+            <select class="form-control" id="ddl-condition" data-ng-model="form.condition" data-ng-disabled="hasPublisher">
                 <option value="">--</option>
                 <option value="Mint">Mint</option>
                 <option value="Fine">Fine</option>
@@ -39,17 +39,34 @@
                 <option value="Poor">Poor</option>
         </select></div>
         <div class="col-lg-1 input-group-sm">
-            <input type="text" class="form-control" id="txt-box" data-ng-model="form.box" type="number"  min="0" max="100">
+            <input type="text" class="form-control" id="txt-box" data-ng-model="form.box" type="number"  min="0" max="100" data-ng-disabled="hasPublisher">
         </div>
         <div class="col-lg-3">
-            <button type="button" class="btn btn-primary" aria-label="Notes">
-                <span class=" glyphicon glyphicon-file" aria-hidden="true" ng-click="addNotes()"></span>
+            <button type="button" class="btn btn-primary" aria-label="Notes" data-ng-disabled="hasPublisher" data-toggle="modal" data-target="#notesModal">
+                <span class=" glyphicon glyphicon-file" aria-hidden="true" ></span>
             </button>
 
-            <button type="button" class="btn btn-primary" aria-label="Add" ng-click="addEntry()">
+            <button type="button" class="btn btn-primary" aria-label="Add" ng-click="addEntry()" data-ng-disabled="hasPublisher">
                 <span class=" glyphicon glyphicon-plus-sign" aria-hidden="true" ></span>
             </button>
         </div>
     </div>
-
+<!-- Modal -->
+	<div class="modal fade" id="notesModal" tabindex="-1" role="dialog" aria-labelledby="notesTitle" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="notesTitle">Add notes</h4>
+	      </div>
+	      <div class="modal-body">
+	       		<textarea rows="5" cols="85" id="ta-notes" ng-model="form.notes"></textarea>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary" ng-click="saveNotes()">Save changes</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 </form>
