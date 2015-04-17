@@ -38,7 +38,7 @@
                     "mkt":  "",
                     "condition":  "",
                     "box" :  "",
-                    "notes": ""
+                    "notes": null
                 };
 
                
@@ -57,6 +57,8 @@
                    };
                     addEntry(newEntry);
           			angular.copy($scope.master,$scope.form);
+          			$scope.hasPublisher = true;
+          			entryNotes = null;
                       
    				};
    				

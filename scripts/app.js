@@ -15,3 +15,4 @@ var cbApp = angular.module('cbApp', ['ui.grid','ui.grid.selection','ui.router','
                  controller:"editBookPubTitleController"
              });
     });
+    // .constant("MONTHS", {"months" : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']});
