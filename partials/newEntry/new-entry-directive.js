@@ -16,9 +16,34 @@
             	  };
             },
 
-            controller: function($scope){
+            controller: function($scope, $filter){
             	$scope.hasPublisher = true;
             	var entryNotes;
+            	
+            	$scope.today = function() {
+				    var dt = new Date();
+				     $scope.dt =  $filter('date')(dt,'MM/dd/yyyy');
+				    ;
+				  };
+				  
+				 $scope.today();
+				 
+				 $scope.open = function($event) {
+				    $event.preventDefault();
+				    $event.stopPropagation();
+				
+				    $scope.opened = true;
+				  };
+
+				  $scope.dateOptions = {
+				    formatYear: 'yyyy',
+				    startingDay: 1,
+				    showWeeks: false
+				  };
+				
+				  $scope.format = 'MM/dd/yyyy';
+  
+  
             	
                 $scope.setPublisher = function(val){
                     $scope.selectedPublisher = val.publisherId;
@@ -43,17 +68,21 @@
 
                
                 $scope.addEntry = function(){
-                                 
+                   var ddlPub = $("#ddl-publisher")[0];
+                   var ddlTitle = $("#ddl-title")[0];
+                             
                    var newEntry = {
-                       "publisher" : {id:entryForm[0].value, name: entryForm[0].options[entryForm[0].selectedIndex].text},
-                       "title": {id: entryForm[1].value, name: entryForm[1].options[entryForm[1].selectedIndex].text},
-                       "issue":  entryForm[2].value,
-                       "qty" :  entryForm[3].value,
-                       "price" :  entryForm[4].value,
-                       "mkt":  entryForm[5].value,
-                       "condition":  entryForm[6].value,
-                       "box" :  entryForm[7].value,
-                       "notes" : entryNotes
+                   	   "purchased": $("#txt-purchased").val(),
+                       "publisher" : {id: ddlPub.value, name: ddlPub.options[ddlPub.selectedIndex].text},
+                       "title": {id: ddlTitle.value, name: ddlTitle.options[ddlTitle.selectedIndex].text},
+                       "issue":  $("#txt-issue").val(),
+                       "qty" :  $("#txt-qty").val(),
+                       "price" :  $("#txt-price").val(),
+                       "mkt":  $("#txt-mkt").val(),
+                       "condition":  $("#ddl-condition").val(),
+                       "box" :  $("#txt-box").val(),
+                       "notes" : entryNotes,
+                      
                    };
                     addEntry(newEntry);
           			angular.copy($scope.master,$scope.form);
@@ -63,7 +92,7 @@
    				};
    				
    				$scope.saveNotes = function(){
-   					entryNotes = angular.element("#ta-notes").val();
+   					entryNotes = $("#ta-notes").val();
    					angular.element("#notesModal").modal('hide');
    				};
             }
