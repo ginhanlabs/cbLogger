@@ -1,3 +1,4 @@
+'use strict';
 (function(){
 	angular.module('cbApp').directive('homedirective',   function(){
 		return {

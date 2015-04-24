@@ -1,9 +1,7 @@
 'use strict'
 
 cbApp.controller('homeController',['$scope', "MONTHS", function($scope, MONTHS){
-        $scope.totalIssuesByPublishers = 0;
-        $scope.totalTitleIssues = 0;
-        $scope.displayLimit = 3;
+       // $scope.totalIssuesByPublishers = 0;
 
        
         $scope.labels = MONTHS.months;

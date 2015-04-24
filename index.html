@@ -31,12 +31,14 @@
    <script type="text/javascript" src="./scripts/appController.js"></script>
    
     <script type="text/javascript" src="./partials/home/homeController.js"></script>
+   
        <script type="text/javascript" src="./scripts/navController.js"></script>
        <script type="text/javascript" src="./scripts/sideNavController.js"></script>
        <script type="text/javascript" src="./scripts/editBookPubTitleController.js"></script>
       <script type="text/javascript" src="./scripts/filters.js"></script>
    
    		<script type="text/javascript" src="./partials/home/home-directive.js"></script>
+   		<script type="text/javascript" src="./partials/summary/summary-directive.js"></script>
        <script type="text/javascript" src="./partials/newEntry/new-entry-directive.js"></script>
        <script type="text/javascript" src="./partials/common-directives/has-notes-directive.js"></script>
    
@@ -44,21 +46,21 @@
 </head>
 <body ng-app="cbApp">
     <div ng-controller="appController">
-     <div ng-include src="'partials/mainNav.html'"></div>
+     	<div ng-include src="'partials/mainNav.html'"></div>
       
         <div class="container-fluid">
-                 <div class="row">
-                     <div class="col-lg-2">
-                        <div ng-include src="'partials/sideNav.html'" ></div>
-                     </div>
-                     <div class="col-lg-7">
-                         <div ui-view></div>
-                   </div>
-                     <div class="col-lg-3"  style="padding:0px 35px">
-                         <div ng-include src="'partials/summary/summary.html'"></div>
-                     </div>
-                 </div>
-               </div>
+         <div class="row">
+             <div class="col-lg-2">
+                <div ng-include src="'partials/sideNav.html'" ></div>
+             </div>
+             <div class="col-lg-7">
+                 <div ui-view></div>
+           </div>
+           <div class="col-lg-3"  style="padding:0px 35px">
+                <div home-summary ></div>
+             </div>
+         </div>
+         </div>
     </div>
 </body>
 </html>

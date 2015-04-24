@@ -23,7 +23,6 @@
             	$scope.today = function() {
 				    var dt = new Date();
 				     $scope.dt =  $filter('date')(dt,'MM/dd/yyyy');
-				    ;
 				  };
 				  
 				 $scope.today();
