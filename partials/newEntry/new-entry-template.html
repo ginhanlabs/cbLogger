@@ -3,11 +3,12 @@
 <div class="well well-sm">
 	<form novalidate role="form" id="entryForm" name="entryForm">
 		<div class="row">
-			
+
 				<div class="col-lg-3">
 					<label for="txtPurchaseDate">Purchase date:</label>
 					<div class="input-group">
-			              <input type="text" class="form-control" id="txt-purchased" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2100-01-01'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" />
+			              <input type="text" class="form-control" id="txt-purchased" datepicker-popup="{{format}}"
+										 	ng-model="dt" is-open="opened" min-date="minDate" max-date="'2100-05-20'"  date-disabled="disabled(date, mode)" close-text="Close" />
 			              <span class="input-group-btn">
 			                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
 			              </span>
@@ -15,16 +16,16 @@
 				</div>
 				<div class="col-lg-3">
 					<label for="ddl-publisher" class="">Publisher</label>
-					
+
 		            <select class="form-control" id="ddl-publisher" ng-model="form.publisher"
 		                 ng-options="p.publisherName for p in publisherlist" ng-change="setPublisher(form.publisher);">
 		            <option value="0">--</option>
 		            </select>
-		        
+
 				</div>
 		</div>
 	    <div class="row form-horizontal">
-	        
+
 	        <div class="col-lg-3"><label for="ddl-title">Title</label></div>
 	        <div class="col-lg-1"> <label for="txt-issue">Issue</label></div>
 	        <div class="col-lg-1"> <label for="txt-qty">Qty</label></div>
@@ -35,7 +36,7 @@
 	        <div class="col-lg-3"></div>
 	    </div>
 	    <div class="row form-horizontal">
-	        
+
 	        <div class="col-lg-3 input-group-sm">
 	            <select class="form-control" id="ddl-title" ng-model="form.title" data-ng-disabled="hasPublisher"
 	                    ng-options="t.title for t in titleslist | filter: {publisherId:selectedPublisher} | orderBy:'title'">
@@ -62,7 +63,7 @@
 	            <button type="button" class="btn btn-primary" aria-label="Notes" data-ng-disabled="hasPublisher" data-toggle="modal" data-target="#notesModal">
 	                <span class=" glyphicon glyphicon-file" aria-hidden="true" ></span>
 	            </button>
-	
+
 	            <button type="button" class="btn btn-primary" aria-label="Add" ng-click="addEntry()" data-ng-disabled="hasPublisher">
 	                <span class=" glyphicon glyphicon-plus-sign" aria-hidden="true" ></span>
 	            </button>

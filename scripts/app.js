@@ -15,4 +15,10 @@ var cbApp = angular.module('cbApp', ['ui.grid','ui.grid.selection','ui.router','
                  controller:"editBookPubTitleController"
              });
     })
+    .config(function (datepickerConfig, datepickerPopupConfig) {
+      datepickerConfig.showWeeks = false,
+      datepickerConfig.startingDay = '0';
+      datepickerPopupConfig.showButtonBar = false
+
+    })
     .constant("MONTHS", {"months" : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']});
