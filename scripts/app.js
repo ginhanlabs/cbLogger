@@ -1,6 +1,6 @@
 'use strict';
 
-var cbApp = angular.module('cbApp', ['ui.grid','ui.grid.selection','ui.router','chart.js','ui.bootstrap'])
+var cbApp = angular.module('cbApp', ['ui.grid','ui.grid.selection','ui.router','chart.js','ui.bootstrap','ngMessages'])
     .config(function($stateProvider, $urlRouterProvider){
         $urlRouterProvider.otherwise("/");
          $stateProvider

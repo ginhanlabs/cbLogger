@@ -1,3 +1,9 @@
 textarea {
     resize: none;
 }
+
+input.ng-invalid {
+  border: 1px solid red;
+}
+
+.addEntry_buttons {padding-top:25px}
