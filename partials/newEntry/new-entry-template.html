@@ -1,24 +1,33 @@
 <h4>Comic Entry</h4>
         <!--<div class="well alert-warning"  ng-hide="entryForm.$valid">Invalid form</div>-->
 <div class="well well-sm">
-	<form novalidate role="form" id="entryForm" name="entryForm">
+	<form novalidate role="form" id="entryForm" name="entryForm" ng-submit="addEntry()">
 		<div class="form-horizontal">
 			<div class="col-lg-12">
-				<div ng-hide="entryForm.$valid">
-					<div ng-if="!isValid" ng-class="{'alert':!isValid,  'alert-danger':!isValid, 'alert-dismissible':!isValid}" role="alert" id="alertEntryContainer">
-						<button type="button" class="close fade in" data-dismiss="alert" id="btn_alertClose" ng-click="closeEntryErrors();" name="btn_alertClose" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<div ng-messages for="entryForm.ddl_title.$error">
-							<div ng-message="required" >Title is required</div>
-						</div>
-							<div ng-messages for="entryForm.txt_issue.$error">
-								<div ng-message="required" >Issue number is required</div>
-								<div ng-message="maxlength" >Issue number is too long</div>
+					<div id="errorContainer" class="bg-danger error" ng-if="entryForm.$invalid && submitted">
+							<div>
+							<div ng-messages = "entryForm.ddl_title.$error">
+								<div ng-message = "required" >Title is required</div>
 							</div>
-							<div ng-messages for="entryForm.txt_qty.$error" >
-								<div ng-message="maxlength" >Qty number is too long</div>
+						</div>
+						<div >
+							<div ng-messages = "entryForm.txt_issue.$error" >
+								<div ng-message = "required" >Issue number is required</div>
+								<div ng-message = "maxlength" >Issue number is too long</div>
+							</div>
+							<div ng-messages = "entryForm.txt_price.$error" >
+								<div ng-message = "currencyValidation" >Price is invalid</div>
+								<div ng-message = "maxlength" >Amount is too long</div>
+							</div>
+							<div ng-messages = "entryForm.txt_mkt.$error" >
+								<div ng-message = "currencyValidation" >Market price is invalid</div>
+								<div ng-message = "maxlength" >Amount is too long</div>
+							</div>
+						</div>
+							<div ng-messages ="entryForm.txt_qty.$error" >
+								<div ng-message = "maxlength" >Qty number is too long</div>
 							</div>
 					</div>
-				</div>
 			</div>
 		</div>
 		<div class="form-horizontal">
@@ -37,6 +46,7 @@
 						<label for="ddl_publisher">Publisher <span class="text-danger">*</span></label>
 								<select class="form-control" id="ddl_publisher" name="ddl_publisher" ng-model="form.publisher"  required
 			                 ng-options="p.publisherName for p in publisherlist" ng-change="setPublisher(form.publisher);">
+											<option value="">Choose one</option>
 			            </select>
 
 
@@ -47,27 +57,28 @@
 				<div class="form-group">
 						<div class="col-lg-3">
 							<label for="ddl_title">Title <span class="text-danger">*</span></label>
-							<select class="form-control" id="ddl_title" name="ddl_title" ng-model="form.title" data-ng-disabled="hasPublisher"  required
+							<select class="form-control" id="ddl_title" name="ddl_title" ng-model="form.ddltitle" data-ng-disabled="hasPublisher"  required
 											ng-options="t.title for t in titleslist | filter: {publisherId:selectedPublisher} | orderBy:'title'">
+											<option value="">Choose one</option>
 							</select>
 						</div>
 		        <div class="col-lg-1">
 								<label for="txt_issue">Issue <span class="text-danger">*</span></label>
-								<input type="text" class="form-control"  name="txt_issue" id="txt_issue" ng-model="form.issue" ng-maxlength="4"
-									ng-required = "!hasPublisher" data-ng-disabled="hasPublisher"/>
+								<input type="text" class="form-control"  name="txt_issue" id="txt_issue" ng-model="form.issue" ng-maxlength="5"
+									ng-required = "!hasPublisher" data-ng-disabled="hasPublisher" data-numbers-only/>
 						</div>
 		        <div class="col-lg-1">
 							<label for="txt_qty">Qty</label>
-							<input type="text"  min="0" max="10" class="form-control" id="txt_qty" name="txt_qty" data-ng-model="form.qty"
-							 data-ng-disabled="hasPublisher" ng-maxlength="3">
+							<input type="text"  min="0" max="10" class="form-control" id="txt_qty" name="txt_qty" ng-model="form.qty"
+							 data-ng-disabled="hasPublisher" ng-maxlength="3" min="0" max="100" data-numbers-only>
 						</div>
 		        <div class="col-lg-1">
 							<label for="txt_price">Price</label>
-							<input type="text" class="form-control" id="txt_price" name="txt_price" data-ng-model="form.price" data-ng-disabled="hasPublisher">
+							<input type="text" class="form-control" id="txt_price" name="txt_price" data-ng-model="form.price" data-ng-disabled="hasPublisher" min="0" max="1000" maxlength="7" data-currency-only currencyValidation>
 						</div>
 		        <div class="col-lg-1">
 								<label for="txt_value">Mkt</label>
-								<input type="text" class="form-control" id="txt_mkt" name="txt_mkt" data-ng-model="form.mkt" data-ng-disabled="hasPublisher">
+								<input type="text" class="form-control" id="txt_mkt" name="txt_mkt" data-ng-model="form.mkt" data-ng-disabled="hasPublisher" maxlength="7" data-currency-only currencyValidation>
 						</div>
 		        <div class="col-lg-1">
 								<label for="txt_condition">Condition</label>
@@ -82,7 +93,7 @@
 						</div>
 		        <div class="col-lg-1">
 								<label for="txt_box">Box</label>
-								<input type="text" class="form-control" id="txt_box" name="txt_box" data-ng-model="form.box" type="number"  min="0" max="100" data-ng-disabled="hasPublisher">
+								<input type="text" class="form-control" id="txt_box" name="txt_box" data-ng-model="form.box" type="number"  min="0" max="100" ng-maxlength="3" data-numbers-only data-ng-disabled="hasPublisher">
 						</div>
 		        <div class="col-lg-3 addEntry_buttons">
 							<label for="btn_Notes" class="sr-only">Notes</label>
@@ -90,7 +101,7 @@
 									<span class=" glyphicon glyphicon-file" aria-hidden="true" ></span>
 							</button>
 							<label for="btn_Add" class="sr-only">Add</label>
-							<button type="button" class="btn btn-primary" aria-label="Add" id="btn_Add" name="btn_Add" ng-click="addEntry()" data-ng-disabled="hasPublisher">
+							<button type="submit" class="btn btn-primary" aria-label="Add" id="btn_Add" name="btn_Add"  data-ng-disabled="hasPublisher">
 									<span class=" glyphicon glyphicon-plus-sign" aria-hidden="true" ></span>
 							</button>
 						</div>

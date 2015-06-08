@@ -16,9 +16,10 @@
             	  };
             },
 
-            controller: function($scope, $filter){
+            controller:  function($scope, $filter){
             	$scope.hasPublisher = true;
             	var entryNotes;
+              $scope.submitted = false;
 
           $scope.today = function() {
 				    var dt = new Date();
@@ -53,7 +54,7 @@
 
 			  $scope.master = {
                     "publisher":  undefined,
-                    "title": "",
+                    "ddltitle": "",
                     "issue":  "",
                     "qty" :  "",
                     "price" :  "",
@@ -66,6 +67,9 @@
 
 
                 $scope.addEntry = function(){
+
+                  $scope.submitted = true;
+
                   var newEntry
                   $scope.isValid = $scope.entryForm.$valid;
                   if ( $scope.isValid) {
@@ -90,6 +94,7 @@
                   			angular.copy($scope.master,$scope.form);
                   			$scope.hasPublisher = true;
                   			entryNotes = null;
+                        $scope.submitted = false;
                       //  return true;
                   }
                   else {

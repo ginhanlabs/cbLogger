@@ -2,8 +2,9 @@ textarea {
     resize: none;
 }
 
-input.ng-invalid {
+form.ng-submitted .form-group input.ng-invalid,  form.ng-submitted select.ng-invalid {
   border: 1px solid red;
 }
-
+.error {color:red}
+.bg-danger {padding: 10px}
 .addEntry_buttons {padding-top:25px}
