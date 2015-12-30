@@ -1,20 +1,22 @@
 'use strict';
 (function(){
-	angular.module('cbApp').controller('appController', ['$scope', '$http', function($scope,  $http){
-		 $http.get("data/publisherData.json").success(function(data){
-        	$scope.PublishersList = data.PublisherList;
-	    });
 
-	    $http.get("data/titlesData.json").success(function(data){
-	        $scope.TitlesList = data.TitleList;
-	    });
+	 var appController = function($scope, $http, PublisherService, TitleService){
 
-	    $http.get("data/top3.json").success(function(data){
+		PublisherService.initPublishersList();
+		TitleService.initTitleList();
+
+// $scope.PublishersList = PublisherService.PublishersList;
+// console.log($scope.PublishersList);
+// 	    $http.get("data/titlesData.json").success(function(data){
+// 	        $scope.TitlesList = data.TitleList;
+// 	    });
+//
+    $http.get("data/top3.json").success(function(data){
 	        $scope.topIssues = data.topIssues;
 	    });
+		};
 
-
-
-
-	}]);
+		appController.$inject = ['$scope', '$http', 'PublisherService', 'TitleService'];
+		angular.module('cbApp').controller('appController', appController);
 })();

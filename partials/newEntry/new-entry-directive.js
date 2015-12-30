@@ -8,7 +8,7 @@
                 titleslist: "=",
                 publisherlist: "="
             },
-            require: "^homedirective",
+            require: "^home",
             templateUrl:'partials/newEntry/new-entry-template.html',
             link: function(scope, elem, attrs, homedirectiveCtrl){
             	addEntry = function(newEntry){

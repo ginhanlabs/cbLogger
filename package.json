@@ -10,6 +10,10 @@
   "author": "ginhanlabs",
   "license": "ISC",
   "devDependencies": {
+    "karma": "^0.12.36",
+    "karma-html-reporter": "^0.2.6",
+    "karma-jasmine": "~0.1",
+    "karma-jasmine-html-reporter-livereload": "^1.0.0",
     "webserver": "^1.1.2"
   }
 }
