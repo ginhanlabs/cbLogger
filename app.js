@@ -1,6 +1,6 @@
 'use strict';
 //,'ui.grid.selection','ngMessages'
-var cbApp = angular.module('cbApp', ['ui.router', 'ui.bootstrap','ui.grid','chart.js',])
+var cbApp = angular.module('cbApp', ['ui.router', 'ui.bootstrap','smart-table','chart.js',])
     .config(function($stateProvider, $urlRouterProvider){
         $urlRouterProvider.otherwise("/");
          $stateProvider
@@ -15,9 +15,10 @@ var cbApp = angular.module('cbApp', ['ui.router', 'ui.bootstrap','ui.grid','char
                  controller:"editBookPubTitleController"
              });
     })
-    .config(function (datepickerConfig, datepickerPopupConfig) {
-    datepickerConfig.showWeeks = false,
-    datepickerConfig.startingDay = '0';
-    datepickerPopupConfig.showButtonBar = false
-   })
+    //, datepickerPopupConfig
+    //.config(function (uibDatepickerConfig) {
+  //    uibDatepickerConfig.showWeeks = false,
+  //   datepickerConfig.startingDay = '0';
+  //   datepickerPopupConfig.showButtonBar = false
+  //  })
     .constant("MONTHS", {"months" : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']});

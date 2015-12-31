@@ -1,0 +1,45 @@
+<table st-table="rowCollection" class="table table-striped">
+  <thead>
+  <tr>
+    <th>Publisher</th>
+    <th>Title</th>
+    <th>Issue</th>
+    <th>Qty</th>
+    <th>Price</th>
+    <th>Value</th>
+    <th>Condition</th>
+    <th>Box</th>
+    <th>Notes</th>
+    <th>Delete</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="row in rowCollection">
+    <td>{{row.firstName}}</td>
+    <td>{{row.lastName}}</td>
+    <td>{{row.birthDate}}</td>
+    <td>{{row.balance}}</td>
+    <td>{{row.email}}</td>
+    <td>{{row.email}}</td>
+    <td>{{row.email}}</td>
+    <td>{{row.email}}</td>
+    <td>{{row.email}}</td>
+    <td><button id="removeBtn_{{$index}}" type="button" class="btn-small" ng-click="deleteEntry(row)">Remove</button> </td>
+  </tr>
+  </tbody>
+</table>
+
+<!--
+// $scope.columns = [
+//           {field: 'publisher', cellFilter :'getNameFilter'},
+//           {field: 'title', cellFilter: 'getNameFilter'} ,
+//           {field: 'issue'},
+//           {field: 'qty'},
+//           {field: 'price'},
+//           {field: 'mkt'},
+//           {field: 'condition'},
+//           {field: 'box'},
+//           {field: 'notes', displayName:'Notes', cellTemplate: 'partials/common-directives/notes-template.html'},
+//         {name: 'remove', displayName: 'Remove', cellTemplate: '<button id="removeBtn_{{$index}}" type="button" class="btn-small" ng-click="grid.appScope.deleteEntry(row.entity)">Remove</button> '}
+//         ]; -->
