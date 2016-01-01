@@ -6,13 +6,13 @@
           <th>Publisher</th>
           <th class="text-right">No. books</th>
       </tr>
-      <tr ng-repeat="p in PublishersList | limitTo: displayLimit">
+      <tr ng-repeat="p in summaryCtrl.publisherList | limitTo: summaryCtrl.displayLimit">
           <td>{{p.publisherName}}</td>
           <td class="text-right">{{p.total}}</td>
       </tr>
       <tr>
           <td>Total</td>
-         <td class="text-right">{{ PublishersList | totalFilter:'total' }}</td>
+         <td class="text-right">{{ summaryCtrl.publisherList | totalFilter:'total' }}</td>
       </tr>
   </table>
   <div class="text-right">
@@ -50,13 +50,13 @@
           <th>Title</th>
           <th>Issues</th>
       </tr>
-    <tr ng-repeat="t in TitlesList | limitTo:displayLimit | orderBy:'-totalIssues'">
+    <tr ng-repeat="t in summaryCtrl.titleList | orderBy:'-totalIssues' | limitTo: summaryCtrl.displayLimit ">
           <td>{{t.title}}</td>
           <td class="text-right">{{t.totalIssues}}</td>
       </tr>
       <tr>
           <td>Total</td>
-          <td class="text-right">{{TitlesList | totalFilter:'totalIssues'}}</td>
+          <td class="text-right">{{summaryCtrl.titleList | totalFilter:'totalIssues'}}</td>
       </tr>
   </table>
   <div class="text-right">

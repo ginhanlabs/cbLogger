@@ -1,7 +1,7 @@
-  <div data-ng-controller="sideNavController as sideNav" >
-  	<uib-accordion >
-	    <uib-accordion-group ng-repeat="p in sideNav.publishers" heading="{{p.publisherName}}" >
-	       	<div ng-repeat="t in sideNav.titles">
+<div >
+  	<uib-accordion>
+	    <uib-accordion-group ng-repeat="p in publisherlist" heading="{{p.publisherName}}" >
+	       	<div ng-repeat="t in titleslist">
                 <div><a href="#">{{t.title | displayTitlesFilter:t.publisherId :p }}</a></div>
           </div>
 	    </uib-accordion-group>

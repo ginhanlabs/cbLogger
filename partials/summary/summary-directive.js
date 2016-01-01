@@ -1,21 +1,25 @@
 'use strict';
 (function(){
 	angular.module('cbApp').directive('homeSummary', function(){
+
+		var SummaryCtrl = ["$scope", "PublisherService", "TitleService", function($scope, PublisherService, TitleService){
+
+			this.totalTitleIssues = 0;
+			this.totalIssuesByPublishers = 0;
+			this.displayLimit = 3;
+
+			this.publisherList = PublisherService.pubList;
+			this.titleList = TitleService.titleList;
+
+		}];
+
 		return {
 			restrict: 'A',
-			templateUrl: 'partials/summary/summary.html',
-			link: function(scope, elem, attrs){
-				
-				;
-			},
-			controller: function($scope){
-				$scope.totalTitleIssues = 0;
-		
-				$scope.totalIssuesByPublishers = 0;
-				
-		        $scope.displayLimit = 3;
-			}
+			controller: SummaryCtrl,
+		 	controllerAs: 'summaryCtrl',
+		//	bindToController: true,
+			templateUrl: 'partials/summary/summary.html'
 		};
-		
+
 	});
 })();
