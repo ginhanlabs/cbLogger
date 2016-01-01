@@ -1,18 +1,23 @@
 (function(){
     angular.module('cbApp').directive('entryTable',  function(){
-      var EntryTableController = ['$scope', '$filter', 'PublisherService', 'TitleService', function($scope, $filter, PublisherService, TitleService){
-        // $scope.columns = [
-        //           {field: 'publisher', cellFilter :'getNameFilter'},
-        //           {field: 'title', cellFilter: 'getNameFilter'} ,
-        //           {field: 'issue'},
-        //           {field: 'qty'},
-        //           {field: 'price'},
-        //           {field: 'mkt'},
-        //           {field: 'condition'},
-        //           {field: 'box'},
-        //           {field: 'notes', displayName:'Notes', cellTemplate: 'partials/common-directives/notes-template.html'},
-        //         {name: 'remove', displayName: 'Remove', cellTemplate: '<button id="removeBtn_{{$index}}" type="button" class="btn-small" ng-click="grid.appScope.deleteEntry(row.entity)">Remove</button> '}
-        //         ];
+      var EntryTableController = ['$scope', '$filter', 'PublisherService', 'TitleService', 'EntryService', '$log', function($scope, $filter, PublisherService, TitleService, EntryService, $log){
+
+        $scope.rowCollection = [];
+        // {"publisher": "Marvel", "title" : "Spider-man", "issue": 100, "qty":1, "price":1.00, "mkt":2.00, "condition": "Mint", "box" :1,  "Notes" : ''}
+
+        $scope.$on("refreshEntries", function(){
+            $scope.rowCollection = EntryService.entryList;
+        });
+
+        $scope.deleteEntry = function(idx){
+          $scope.rowCollection.splice(idx,1);
+          EntryService.update($scope.rowCollection);
+        }
+
+        $scope.saveEntries = function(){
+          EntryService.saveEntries($scope.rowCollection);
+          $scope.rowCollection = [];
+        };
 
     }];
 

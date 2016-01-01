@@ -7,12 +7,20 @@
 
     self.add = function(data){
         self.entryList.push(data);
-        $log.log(self.entryList);
-     };
+      };
+
+    self.update = function(data){
+      self.entryList = data;
+    };
 
      self.getEntries = function(){
        return self.entryList;
-     }
+     };
+
+     self.saveEntries = function(data){
+       self.entryList = data;
+       // TODO save to dbase
+     };
 
   }]);
 })();

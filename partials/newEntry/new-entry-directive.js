@@ -12,22 +12,15 @@
         $scope.submitted = false;
 
         $scope.today = function() {
-            var dt = new Date();
+          var dt = new Date();
           $scope.dt =  $filter('date')(dt,'MM/dd/yyyy');
-          };
+        };
 
         $scope.open = function($event) {
           $event.preventDefault();
             $event.stopPropagation();
            $scope.opened = true;
          };
-      //  $scope.today();
-
-         /*   $scope.form = {
-          "title" : null,
-          "publisher" : null
-          }; */
-      //
 
       $scope.setPublisher = function(val){
         $scope.selectedPublisher = val.publisherId;
@@ -76,8 +69,8 @@
 
           };
 
-        //  addEntry(newEntry);
           EntryService.add(newEntry);
+          $scope.$emit("refreshEntries")
           angular.copy($scope.master,$scope.form);
           $scope.hasPublisher = true;
           entryNotes = null;
@@ -90,13 +83,13 @@
       };
 
       $scope.saveNotes = function(){
-        entryNotes = $("#ta_notes").val();
+        entryNotes = $scope.form.notes;
         angular.element("#notesModal").modal('hide');
       };
 
-      $scope.closeEntryErrors = function(){
-        $("#alertEntryContainer").alert('close');
-      }
+      // $scope.closeEntryErrors = function(){
+      //   $("#alertEntryContainer").alert('close');
+      // }
 
     }];
 
@@ -109,17 +102,9 @@
               publisherlist: "="
           },
           controller: NewEntryController,
-        //  require: "^home",
           templateUrl:'partials/newEntry/new-entry-template.html',
-          link: function(scope, elem, attrs){
-            // addEntry = function(newEntry){
-            //     homedirectiveCtrl.updateEntries(newEntry);
-            //   };
-          }
+
         }
       });
-
-    //  NewEntryController.$inject = ['$scope', '$filter', 'PublisherService'];
-
 
 })();

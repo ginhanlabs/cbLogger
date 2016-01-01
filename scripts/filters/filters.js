@@ -20,5 +20,5 @@
             return function (input) {
                 return input.name;
             };
-        });
+        })
 })();
