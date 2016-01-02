@@ -2,7 +2,7 @@
   	<uib-accordion>
 	    <uib-accordion-group ng-repeat="p in publisherlist" heading="{{p.publisherName}}" >
 	       	<div ng-repeat="t in titleslist">
-                <div><a href="#">{{t.title | displayTitlesFilter:t.publisherId :p }}</a></div>
+                <div><a href="#/details/{{t.titleId}}">{{t.title | displayTitlesFilter:t.publisherId :p }}</a></div>
           </div>
 	    </uib-accordion-group>
     </uib-accordion>

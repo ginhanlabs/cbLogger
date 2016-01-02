@@ -1,6 +1,6 @@
 'use strict';
 (function(){
-	angular.module('cbApp').directive('homeSummary', function(){
+	angular.module('cbApp').directive('summary', function(){
 
 		var SummaryCtrl = ["$scope", "PublisherService", "TitleService", function($scope, PublisherService, TitleService){
 

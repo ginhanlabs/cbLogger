@@ -1,20 +1,20 @@
 'use strict';
-//,'ui.grid.selection','ngMessages'
-var cbApp = angular.module('cbApp', ['ui.router', 'ui.bootstrap','smart-table','chart.js',])
-    .config(function($stateProvider, $urlRouterProvider){
-        $urlRouterProvider.otherwise("/");
-         $stateProvider
-            .state('/', {
-                url:'/',
-                templateUrl:"partials/home/home.html",
-                controller: "homeController"
-            })
-             .state('editBookPubTitle',{
-                 url:'/editBookPubTitle',
-                 templateUrl:"partials/editBookPubTitle.html",
-                 controller:"editBookPubTitleController"
-             });
-    })
+
+var cbApp = angular.module('cbApp', ['ngRoute','ui.bootstrap','smart-table','chart.js'])
+    .config(['$routeProvider', function($routeProvider){
+
+        $routeProvider
+        .when('/home', {
+            templateUrl: "/partials/home/home.html",
+            controller: 'HomeCtrl'
+        })
+        .when('/details/:titleId', {
+          templateUrl: "/partials/detailsView/details.tpl.html"
+        })
+        .otherwise({
+          redirectTo: "/home"
+       })
+    }])
     //, datepickerPopupConfig
     //.config(function (uibDatepickerConfig) {
   //    uibDatepickerConfig.showWeeks = false,

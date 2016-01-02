@@ -17,7 +17,7 @@
 
      publisherSrv.getPubList = function(){
        return publisherSrv.pubList;
-     }
+     };
 
   }]);
 })();

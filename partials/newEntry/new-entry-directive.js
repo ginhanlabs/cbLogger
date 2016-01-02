@@ -1,11 +1,18 @@
 (function(){
     angular.module('cbApp').directive('newEntry',  function(){
-      var NewEntryController = ['$scope', '$filter', 'PublisherService', 'TitleService', 'EntryService', function($scope, $filter, PublisherService, TitleService, EntryService){
+      var NewEntryController = ['$scope', '$filter', 'PublisherService', 'TitleService', 'EntryService', '$routeParams', '$log',
+          function($scope, $filter, PublisherService, TitleService, EntryService, $routeParams, $log){
       //  var addEntry;
         $scope.format = 'MM/dd/yyyy';
         $scope.isValid = true;
         $scope.publisherlist = PublisherService.pubList;
         $scope.titleslist = TitleService.titleList;
+
+        if ($routeParams.titleId) {
+            $log.log($routeParams.titleId);
+            $scope.titleId = parseInt($routeParams.titleId);
+        };
+
 
         $scope.hasPublisher = true;
         var entryNotes;

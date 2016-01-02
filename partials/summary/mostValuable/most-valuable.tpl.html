@@ -1,0 +1,21 @@
+<h4>Most Valuable</h4>
+ <table class="table table-striped">
+     <tr>
+         <th>Title</th>
+         <th>Issue</th>
+         <th class="text-right">Value</th>
+     </tr>
+     <tr ng-repeat="item in mostValuableCtrl.topIssues">
+         <td>{{item.title }}</td>
+         <td>{{item.issue }}</td>
+         <td class="text-right">{{ item.marketValue | currency:"$":00 }}</td>
+     </tr>
+     <tr>
+         <td>Total</td>
+         <td></td>
+         <td class="text-right">{{mostValuableCtrl.topIssues | totalFilter:'marketValue' | currency:"$":00 }}</td>
+     </tr>
+ </table>
+ <div class="text-right">
+     <a href="#">Top 100</a>
+ </div>

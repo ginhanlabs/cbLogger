@@ -1,8 +1,12 @@
 'use strict'
 
-cbApp.controller('homeController',['$scope', "MONTHS", function($scope, MONTHS){
+cbApp.controller('HomeCtrl',['$scope', "MONTHS", function($scope, MONTHS){
        // $scope.totalIssuesByPublishers = 0;
 
+       $scope.displayChart = false;
+       $scope.showChart = function(){
+         $scope.displayChart = !$scope.displayChart;
+       };
 
         $scope.labels = MONTHS.months;
         $scope.series = ['Series A'];

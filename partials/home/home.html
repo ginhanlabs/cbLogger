@@ -2,9 +2,9 @@
    <side-nav></side-nav>
 </div>
 <div class="col-lg-7">
-    <div class="row">
-      <h4>Monthly Spending</h4>
-      <canvas id="bar" class="chart chart-bar" data="data" labels="labels"></canvas>
+    <div class="row">{{displayChart}}
+      <h4 ><div ng-click="showChart()">Monthly Spending</div></h4>
+        <canvas id="bar" class="chart chart-bar" data="data" labels="labels" ng-show="displayChart"></canvas>
     </div>
     <div class="row">
          <new-entry></new-entry>
@@ -15,5 +15,5 @@
     </div>
 </div>
 <div class="col-lg-3"  style="padding:0px 35px">
-    <div home-summary ></div>
+    <div summary ></div>
 </div>

@@ -15,7 +15,7 @@
     <script src="./bower_components/jquery/dist/jquery.min.js"></script>
     <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="./bower_components/angular/angular.js"></script>
-    <script src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="./bower_components/angular-route/angular-route.min.js"></script>
     <script src="./bower_components//angular-smart-table/dist/smart-table.min.js"></script>
     <script src="./bower_components/Chart.js/Chart.min.js"></script>
     <script src="./bower_components/angular-chart.js/dist/angular-chart.js"></script>
@@ -38,6 +38,7 @@
 
      <script type="text/javascript" src="partials/sideNav/side-nav-directive.js"></script>
      <script type="text/javascript" src="partials/summary/summary-directive.js"></script>
+     <script type="text/javascript" src="partials/summary/mostValuable/most-valuable-directive.js"></script>
      <script type="text/javascript" src="partials/newEntry/new-entry-directive.js"></script>
      <script type="text/javascript" src="partials/newEntry/entry-table-directive.js?n=0"></script>
      <script type="text/javascript" src="partials/common-directives/has-notes-directive.js"></script>
@@ -50,7 +51,7 @@
      	<div ng-include src="'partials/mainNav/mainNav.html'"></div>
       <div class="container-fluid">
          <div class="row">
-           <div ui-view></div>
+            <div ng-view></div>
           </div>
       </div>
     </div>
